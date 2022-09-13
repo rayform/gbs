@@ -4,17 +4,18 @@
 #include <functional>
 #include <execution>
 #include <cmath>
+#include <numeric>
 
 namespace gbs
 {
-    const auto vecop_policy = std::execution::seq;
+    // const auto vecop_policy = std::execution::seq;
 
     template <typename T, size_t dim>
     std::array<T, dim> operator+(const std::array<T, dim> &a, const std::array<T, dim> &b)
     {
         std::array<T, dim> c;
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(), b.begin(), c.begin(), 
             std::plus<T>()
             );
@@ -25,7 +26,7 @@ namespace gbs
     std::array<T, dim> & operator+=(std::array<T, dim> &a, const std::array<T, dim> &b)
     {
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(), b.begin(), a.begin(), 
             std::plus<T>()
             );
@@ -37,7 +38,7 @@ namespace gbs
     {
         std::array<T, dim> c;
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(), b.begin(), c.begin(), 
             std::minus<T>()
             );
@@ -49,7 +50,7 @@ namespace gbs
     {
         std::array<T, dim> c;
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(), c.begin(), 
             [&b](const auto &a_){return a_-b;}
             );
@@ -61,7 +62,7 @@ namespace gbs
     {
         std::array<T, dim> c;
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(), c.begin(), 
             [&b](const auto &a_){return b-a_;}
             );
@@ -94,7 +95,7 @@ namespace gbs
     T operator*(const std::array<T, dim> &a, const std::array<T, dim> &b)
     {
        return  std::transform_reduce(
-           vecop_policy,
+           // vecop_policy,
             a.begin(),a.end(),
             b.begin(),
             0.0
@@ -106,7 +107,7 @@ namespace gbs
     {
         std::array<T, dim> c;
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(),
             c.begin(),
             [&](const auto &ax) { return static_cast<T>(ax * b); });
@@ -131,7 +132,7 @@ namespace gbs
     {
         std::vector<std::array<T, dim>> d(a.size());
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             a.begin(), a.end(),
             b.begin(),
             d.begin(),
@@ -143,7 +144,7 @@ namespace gbs
     T sq_norm(const std::array<T, dim> &c)
     {
         return std::transform_reduce(
-                       vecop_policy,
+                       // vecop_policy,
                        c.begin(), c.end(), 
                        c.begin(), 
                        0.0); // c++20
@@ -172,7 +173,7 @@ namespace gbs
     T length(const std::vector< std::array<T, dim> > &pts)
     {
         return std::transform_reduce(
-            vecop_policy,
+            // vecop_policy,
             ++pts.begin(),pts.end(),pts.begin(),T(0.),
             std::plus<T>(),
             [](const auto &pt1,const auto &pt2){return distance(pt1,pt2);}
@@ -184,7 +185,7 @@ namespace gbs
     {
         std::vector<T> d_v(v.size() - 1);
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             v.begin(), std::next(v.end(), -1),
             std::next(v.begin()),
             d_v.begin(),
@@ -199,7 +200,7 @@ namespace gbs
     {
         std::vector<T> d_v(v1.size());
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             v1.begin(), v1.end(),
             v2.begin(),
             d_v.begin(),
@@ -213,7 +214,7 @@ namespace gbs
     void adim(std::vector<T> &v)
     {
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             v.begin(), std::next(v.end(), -1),
             v.begin(),
             [](const auto &v_) {
@@ -226,7 +227,7 @@ namespace gbs
     {
         auto n = norm(v);
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             v.begin(),v.end(),
             v.begin(),
             [&n](const auto &x_) {
@@ -240,7 +241,7 @@ namespace gbs
     {
         std::vector<T> v1(v_end-v_start+1);
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             v_start,v_end,
             b_start,
             v1.begin(),
@@ -249,7 +250,7 @@ namespace gbs
 
         std::vector<T> v2(v_end-v_start+1);
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             std::next(v_start),std::next(v_end),
             b_start,
             v2.begin(),
@@ -257,7 +258,7 @@ namespace gbs
         );
 
         std::transform(
-            vecop_policy,
+            // vecop_policy,
             v1.begin(),v1.end(),
             v2.begin(),
             r_start,

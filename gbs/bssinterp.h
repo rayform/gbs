@@ -73,8 +73,8 @@ namespace gbs
         }
     }
 
-    template <typename T, size_t dim>
-    auto build_poles(const auto &N_inv, const std::vector<std::array<T, dim>> &Q)
+    template <typename T, size_t dim, typename NInvType>
+    auto build_poles(const NInvType &N_inv, const std::vector<std::array<T, dim>> &Q)
     {
         auto n_poles = N_inv.cols();
         auto n_pt = Q.size();
@@ -137,7 +137,7 @@ namespace gbs
                 auto pts = extract_f(i);
                 auto params_i = gbs::curve_parametrization(pts, mode, true);
                 std::transform(
-                    std::execution::par,
+                    /* std::execution::par, */
                     params_i.begin(),
                     params_i.end(),
                     params.begin(),

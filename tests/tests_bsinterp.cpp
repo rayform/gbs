@@ -284,7 +284,7 @@ TEST(tests_bscurve, perf_build_poles_unif_constr)
     using T = double;
     size_t n = 360;
     std::vector<gbs::constrType<T,2,3> > Q(n);
-    auto th = gbs::make_range<T>(0., std::numbers::pi,n);
+    auto th = gbs::make_range<T>(0., M_PI,n);
     std::transform(
         th.begin(), th.end(), Q.begin(),
         [](T th){

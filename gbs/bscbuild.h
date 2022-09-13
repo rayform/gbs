@@ -119,7 +119,7 @@ namespace gbs
         // std::vector<size_t> chunck(n);
         // std::generate(chunck.begin(), chunck.end(), [&, i = -1]() mutable {i++;return i; });
         // std::transform(
-        //     std::execution::par,
+        //     /* std::execution::par, */
         //     chunck.begin(), chunck.end(),
         //     new_poles.begin(),
         //     [&](const auto i) {

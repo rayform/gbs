@@ -114,7 +114,7 @@ auto f_curve2d_offset_functor()
 {
     auto circle1 = gbs::build_circle<double, 2>(1.);
     size_t n_pulse = 10;
-    auto f_offset = [n_pulse](auto u, size_t d = 0){return d==0 ? (std::sin(u*2.*std::numbers::pi*n_pulse)*0.5 + 0.5) : -std::numbers::pi*n_pulse*std::cos(u*2.*std::numbers::pi*n_pulse);};
+    auto f_offset = [n_pulse](auto u, size_t d = 0){return d==0 ? (std::sin(u*2.*M_PI*n_pulse)*0.5 + 0.5) : -M_PI*n_pulse*std::cos(u*2.*M_PI*n_pulse);};
     auto p_circle1 = std::make_shared<gbs::BSCurveRational<double, 2>>(circle1);
 
     gbs::CurveOffset<double, 2,decltype(f_offset)> circle2{
@@ -128,7 +128,7 @@ TEST(tests_curves, curve2d_offset_functor)
 {
     // auto circle1 = gbs::build_circle<double, 2>(1.);
     // size_t n_pulse = 10;
-    // auto f_offset = [n_pulse](auto u, size_t d = 0){return d==0 ? std::sin(u*2.*std::numbers::pi*n_pulse)*0.5 + 0.5 : std::numbers::pi*n_pulse*std::cos(u*2.*std::numbers::pi*n_pulse);};
+    // auto f_offset = [n_pulse](auto u, size_t d = 0){return d==0 ? std::sin(u*2.*M_PI*n_pulse)*0.5 + 0.5 : M_PI*n_pulse*std::cos(u*2.*M_PI*n_pulse);};
     // auto p_circle1 = std::make_shared<gbs::BSCurveRational<double, 2>>(circle1);
 
     // gbs::CurveOffset<double, 2,decltype(f_offset)> circle2{
@@ -190,7 +190,7 @@ TEST(tests_curves,curve_on_surface)
     size_t n_pulse = 10;
     auto f_offset = [n_pulse,amp=0.03](auto u, size_t d = 0)
     {
-        return d==0 ? -(std::sin(u*2.*std::numbers::pi*n_pulse)*amp + amp) : -std::numbers::pi*n_pulse*std::cos(u*2.*std::numbers::pi*n_pulse);
+        return d==0 ? -(std::sin(u*2.*M_PI*n_pulse)*amp + amp) : -M_PI*n_pulse*std::cos(u*2.*M_PI*n_pulse);
     };
     gbs::CurveOffset<double, 2, decltype(f_offset)> circle2{
         std::make_shared<gbs::BSCurveRational<double, 2>>(

@@ -495,7 +495,7 @@ TEST(tests_io, iges_surfaces)
       for (auto i = 0; i < nu; i++)
       {
          x = u[i] - 0.5;
-         z = std::sin(std::numbers::pi * (std::sqrt(x * x + y * y)));
+         z = std::sin(M_PI * (std::sqrt(x * x + y * y)));
          points[i + j * nu] = {x, y, z};
       }
    }

@@ -90,7 +90,7 @@ TEST(tests_bscanalysis, discretize)
     auto u = gbs::uniform_distrib_params(c,0.,0.5,n,100);
     for(size_t i {}; i < n ; i++)
     {
-        auto s = i / (n-1.) * std::numbers::pi;
+        auto s = i / (n-1.) * M_PI;
         gbs::point<double,3> pt {std::cos(s), std::sin(s),0.};
         auto u_ = *std::next(u.begin(),i);
         ASSERT_LT(gbs::norm(c(u_) - pt ), 1e-6);

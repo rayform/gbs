@@ -118,11 +118,11 @@ TEST(tests_vtk_render, dev)
     gbs::BSCurveRational3d_d crv3(poles1,k1,2); // thickenss law
     crv3.changeBounds(0.,1.);
 
-    auto b1 = 60 / 180. * std::numbers::pi;
-    auto b2 = -10 / 180. * std::numbers::pi;
+    auto b1 = 60 / 180. * M_PI;
+    auto b2 = -10 / 180. * M_PI;
     auto t1 = 1.;
     auto t2 = 1.;
-    auto g  = 30 / 180. * std::numbers::pi;
+    auto g  = 30 / 180. * M_PI;
 
     std::vector<std::array<double, 4>> poles4 = {{0.,0.,0.,1.},{0.33*t1*c*cos(b1),0.33*t1*c*sin(b1),0.,1.},{c*cos(g)-0.33*t2*c*cos(b2),c*sin(g)-0.33*t2*c*sin(b2),0.,1.},{c*cos(g),c*sin(g),0.,1.}};
     std::vector<double>                    k4 = {0.,0.,0.,0.5,1.,1.,1.};

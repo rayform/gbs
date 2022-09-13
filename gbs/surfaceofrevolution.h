@@ -20,7 +20,7 @@ namespace gbs
 
     public:
         SurfaceOfRevolution(const SurfaceOfRevolution<T> &srf) = default;
-        SurfaceOfRevolution(const std::shared_ptr<Curve<T, 2>> &crv, const ax2<T, 3> &ax, T a1 = 0., T a2 = 2. * std::numbers::pi) : p_crv_{crv}, ax2_{ax}, ax_{{ax[0],ax[1]/norm(ax[1])}}, angle_span_{{a1, a2}}
+        SurfaceOfRevolution(const std::shared_ptr<Curve<T, 2>> &crv, const ax2<T, 3> &ax, T a1 = 0., T a2 = 2. * M_PI) : p_crv_{crv}, ax2_{ax}, ax_{{ax[0],ax[1]/norm(ax[1])}}, angle_span_{{a1, a2}}
         {
             T i = 1.;
             T o = 0.;
@@ -34,10 +34,10 @@ namespace gbs
                 ax
             );
         }
-        SurfaceOfRevolution(const BSCurve<T, 2> &crv, const ax2<T, 3> &ax, T a1 = 0., T a2 = 2. * std::numbers::pi) : 
+        SurfaceOfRevolution(const BSCurve<T, 2> &crv, const ax2<T, 3> &ax, T a1 = 0., T a2 = 2. * M_PI) : 
             SurfaceOfRevolution{std::make_shared<BSCurve<T, 2>>(crv), ax, a1, a2}
         {        }
-        SurfaceOfRevolution(const CurveOnSurface<T, 2> &crv, const ax2<T, 3> &ax, T a1 = 0., T a2 = 2. * std::numbers::pi) : 
+        SurfaceOfRevolution(const CurveOnSurface<T, 2> &crv, const ax2<T, 3> &ax, T a1 = 0., T a2 = 2. * M_PI) : 
             SurfaceOfRevolution{std::make_shared<CurveOnSurface<T, 2>>(crv), ax, a1, a2}
         {        }
         /**

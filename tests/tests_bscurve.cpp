@@ -171,10 +171,10 @@ TEST(tests_bscurve, curve_reparametrized)
 
     auto tol = 1e-6;
 
-    ASSERT_NEAR(reparam(std::numbers::pi/2.)[1], 1.,tol);
-    ASSERT_NEAR(reparam(std::numbers::pi/2.)[0], 0.,tol);
-    ASSERT_NEAR(reparam(std::numbers::pi   )[1], 0.,tol);
-    ASSERT_NEAR(reparam(std::numbers::pi   )[0],-1.,tol);
+    ASSERT_NEAR(reparam(M_PI/2.)[1], 1.,tol);
+    ASSERT_NEAR(reparam(M_PI/2.)[0], 0.,tol);
+    ASSERT_NEAR(reparam(M_PI   )[1], 0.,tol);
+    ASSERT_NEAR(reparam(M_PI   )[0],-1.,tol);
 }
 
 TEST(tests_bscurve, eval_except)

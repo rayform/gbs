@@ -45,7 +45,7 @@ namespace gbs
         using bs_type = typename std::conditional<rational,BSCurveRational<T, dim>,BSCurve<T, dim>>::type;
         std::list<bs_type> bs_lst_cpy(bs_lst.size());
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             bs_lst.begin(),
             bs_lst.end(),
             bs_lst_cpy.begin(),
@@ -63,7 +63,7 @@ namespace gbs
         {
             points_vector<T,dim + rational> poles_v{ n_poles_v };
             std::transform(
-                std::execution::par,
+                /* std::execution::par, */
                 bs_lst_cpy.begin(),
                 bs_lst_cpy.end(),
                 poles_v.begin(),
@@ -120,7 +120,7 @@ namespace gbs
         // Get poles array with unified degree and bounds
         std::vector < std::pair<points_vector<T, dim + rational>, std::vector<T> > > poles_knots(nv);
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             // bs_lst.begin(), bs_lst.end(),
             first, last,
             poles_knots.begin(),
@@ -156,7 +156,7 @@ namespace gbs
         auto indexes = make_range<size_t>(0, nu-1);
         auto kv_flat = build_simple_mult_flat_knots<T>(v,q);
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             indexes.begin(), indexes.end(),
             pole_interp.begin(),
             [nv,q,&poles_knots,&v,&kv_flat](auto i)
@@ -217,7 +217,7 @@ namespace gbs
         for(auto pts : poles_v_lst)
         {
             std::transform(
-                std::execution::par,
+                /* std::execution::par, */
                 pts.begin(),
                 pts.end(),
                 Q.begin(),
@@ -238,7 +238,7 @@ namespace gbs
         // compute positions on spine
         std::vector<T> v_spine(bs_lst_cpy.size());
         std::transform(
-                std::execution::par,
+                /* std::execution::par, */
                 bs_lst_cpy.begin(),
                 bs_lst_cpy.end(),
                 v_spine.begin(),
@@ -250,7 +250,7 @@ namespace gbs
         // compute spine distances
         std::vector<T> d(v_spine.size() - 1);
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             std::next(v_spine.begin()),
             v_spine.end(),
             v_spine.begin(),
@@ -261,7 +261,7 @@ namespace gbs
         // compute spine tg
         std::vector<std::array<T,dim+rational>> D(v_spine.size());
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             v_spine.begin(),
             v_spine.end(),
             D.begin(),
@@ -322,7 +322,7 @@ namespace gbs
         {
             auto [pt, tg] = pt_and_tg;
             std::transform(
-                // std::execution::par, // not working with boost::combine
+                // /* std::execution::par, */ // not working with boost::combine
                 pt.begin(),
                 pt.end(),
                 tg.begin(),
@@ -458,7 +458,7 @@ namespace gbs
         // compute and check intersections
         std::vector<T> u(nu);
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             first_v, last_v,
             u.begin(),
             [first_u,first_v,tol](const auto &crv_v){
@@ -473,7 +473,7 @@ namespace gbs
 
         std::vector<T> v(nv);
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             first_u, last_u,
             v.begin(),
             [first_u,first_v,tol](const auto &crv_u){

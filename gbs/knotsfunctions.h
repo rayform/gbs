@@ -407,7 +407,7 @@ namespace gbs
 
         auto D = delta(Pi_, Pj_);
         // if (std::reduce(
-        //         std::execution::par,
+        //         /* std::execution::par, */
         //         D.begin(), D.end(),
         //         T(0.),
         //         [](const auto &t_, const auto &v_) { return t_ + sq_norm(v_); }) < tol)

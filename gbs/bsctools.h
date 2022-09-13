@@ -58,7 +58,7 @@ namespace gbs
     {
         auto km2 = unflat_knots(pk2.second);
         std::for_each(
-            // std::execution::par,
+            // /* std::execution::par, */
             km2.begin(), km2.end(),
             [&pk1, degree](const auto &km)
             {
@@ -237,7 +237,7 @@ namespace gbs
     {
         auto d  = norm(p1 - p2);
         auto u1 = 0.;
-        auto u2 = std::numbers::pi * d * 0.5;
+        auto u2 = M_PI * d * 0.5;
         std::vector<bsc_constrain<T, 2>> cstr_lst = {
             bsc_constrain<T, 2>{u1,t1,1}
             ,
@@ -400,7 +400,7 @@ namespace gbs
         auto d2 = crv2.begin(3);
         auto d  = norm(p1 - p2);
         auto u1 = 0.;
-        auto u2 = std::numbers::pi * d * 0.5;
+        auto u2 = M_PI * d * 0.5;
         std::vector<bsc_constrain<T, 2>> cstr_lst = {
             bsc_constrain<T, 2>{u1,t1,1}
             ,
@@ -457,7 +457,7 @@ namespace gbs
     {
         points_vector<T,dim+1> poles(crv.poles().size());
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             crv.poles().begin(),
             crv.poles().end(),
             poles.begin(),

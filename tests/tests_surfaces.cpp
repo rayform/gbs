@@ -43,7 +43,7 @@ TEST(tests_surfaces, surface_of_revolution)
         }}
         ,
         0.,
-        0.5 * std::numbers::pi
+        0.5 * M_PI
     };
 
 

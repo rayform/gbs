@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # set(CMAKE_CXX_FLAGS     "${CMAKE_CXX_FLAGS} /fp:fast /arch:AVX512")
-set(CMAKE_CXX_FLAGS     "${CMAKE_CXX_FLAGS} /fp:fast /arch:AVX2")
+# set(CMAKE_CXX_FLAGS     "${CMAKE_CXX_FLAGS} /fp:fast /arch:AVX2")
 
 # Set installation directories (CMAKE_INSTALL_INCLUDEDIR, CMAKE_INSTALL_BINDIR, CMAKE_INSTALL_LIBDIR)
 include(GNUInstallDirs)
@@ -66,17 +66,17 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
 # Boost
-find_package(Boost REQUIRED)
+find_package(Boost)
 
 # NLOPT
-find_package(NLopt REQUIRED)
+find_package(NLopt)
 
 # Eigen
-find_package (Eigen3 3.3 REQUIRED NO_MODULE)
-include_directories(${EIGEN3_INCLUDE_DIR})
+find_package(eigen REQUIRED NO_MODULE)
+
 # TBB
 if(UNIX)
-    find_package(TBB REQUIRED)
+    find_package(TBB)
 endif()
 
 # libIGES
@@ -170,4 +170,5 @@ if(${BUILD_DOC})
 endif(${BUILD_DOC})
 
 add_executable(main main.cpp)
-SET_TARGET_PROPERTIES(main PROPERTIES LINK_FLAGS "/PROFILE")
+# SET_TARGET_PROPERTIES(main PROPERTIES LINK_FLAGS "/PROFILE")
+target_link_libraries(main PUBLIC eigen::eigen)

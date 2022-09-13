@@ -6,12 +6,12 @@
 
 namespace gbs
 {
-    template <typename T, size_t dim>
-    auto transform(BSCurve<T, dim> &crv, auto trf) -> void
+    template <typename T, size_t dim, typename TrfType>
+    auto transform(BSCurve<T, dim> &crv, TrfType trf) -> void
     {
         auto poles = crv.poles();
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -19,8 +19,8 @@ namespace gbs
         crv.movePoles(poles);
     }
 
-    template <typename T, size_t dim>
-    auto transform(BSCurveRational<T, dim> &crv, auto trf) -> void
+    template <typename T, size_t dim, typename TrfType>
+    auto transform(BSCurveRational<T, dim> &crv, TrfType trf) -> void
     {
         auto poles_w = crv.poles();
         std::vector<std::array<T, dim>> poles;
@@ -28,7 +28,7 @@ namespace gbs
         separate_weights(poles_w, poles, weights);
 
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -37,12 +37,12 @@ namespace gbs
         crv.movePoles(poles_w);
     }
 
-    template <typename T, size_t dim>
-    auto transform(BSSurface<T, dim> &crv, auto trf) -> void
+    template <typename T, size_t dim, typename TrfType>
+    auto transform(BSSurface<T, dim> &crv, TrfType trf) -> void
     {
         auto poles = crv.poles();
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -50,8 +50,8 @@ namespace gbs
         crv.movePoles(poles);
     }
 
-    template <typename T, size_t dim>
-    auto transform(BSSurfaceRational<T, dim> &crv, auto trf) -> void
+    template <typename T, size_t dim, typename TrfType>
+    auto transform(BSSurfaceRational<T, dim> &crv, TrfType trf) -> void
     {
         auto poles_w = crv.poles();
         std::vector<std::array<T, dim>> poles;
@@ -59,7 +59,7 @@ namespace gbs
         separate_weights(poles_w, poles, weights);
 
         std::transform(
-            std::execution::par,
+            /* std::execution::par, */
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -83,7 +83,8 @@ namespace gbs
 
     // template <typename G>
     // auto transformed(const G &geo, auto trf)
-    auto transformed(const auto &geo, auto trf)
+    template <typename G, typename TrfType>
+    auto transformed(const G &geo, TrfType trf)
     {
         auto res {geo};
         transform(res,trf);

@@ -404,11 +404,11 @@ TEST(tests_bssbuild,gordon_foils)
     auto crv2_2d = bscurve_approx_from_points<T,2>("../tests/in/e817.dat",5,KnotsCalcMode::CHORD_LENGTH,1);
     auto crv3_2d = bscurve_approx_from_points<T,2>("../tests/in/e186.dat",5,KnotsCalcMode::CHORD_LENGTH,1);
     translate(crv2_2d,{-0.5,0.});
-    rotate(crv2_2d,std::numbers::pi/8.);
+    rotate(crv2_2d,M_PI/8.);
     translate(crv2_2d,{0.5,0.});
 
     translate(crv3_2d,{-0.5,0.});
-    rotate(crv3_2d,std::numbers::pi/6.);
+    rotate(crv3_2d,M_PI/6.);
     translate(crv3_2d,{0.5,0.});
 
     auto crv1 = add_dimension(crv1_2d,0.0);

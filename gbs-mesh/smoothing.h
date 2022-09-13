@@ -35,7 +35,7 @@ namespace gbs
             for (size_t i{i1 + 1}; i < i2; i++)
             {
                 for (size_t j{j1 + 1}; j < j2; j++)
-                // std::for_each(std::execution::par,j_span.begin(), j_span.end(), [&](size_t j)
+                // std::for_each(/* std::execution::par, */j_span.begin(), j_span.end(), [&](size_t j)
                 {
 
                     auto x_ksi = (X(i + 1, j, 0) - X(i - 1, j, 0)) / (2 * d_ksi);

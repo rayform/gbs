@@ -183,7 +183,7 @@ class simple_solver
     {
         if(Y0.size()!=N)
         {
-            std::exception("wrong size");
+            throw std::exception();
         }
         std::copy(
             Y0.begin(),

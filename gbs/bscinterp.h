@@ -26,7 +26,7 @@ auto build_3pt_tg_vec(const std::vector<std::array<T, dim>> &pts,const std::vect
 
     std::vector<T> alpha(u.size() - 2);
     std::transform(
-        std::execution::par,
+        /* std::execution::par, */
         d_u.begin(), std::next(d_u.end(),-1),
         std::next(d_u.begin()),
         alpha.begin(),
@@ -55,7 +55,7 @@ auto build_3pt_tg_dir(const std::vector<std::array<T, dim>> &pts,const std::vect
 
     std::vector<T> alpha(u.size() - 2);
     std::transform(
-        std::execution::par,
+        /* std::execution::par, */
         d_u.begin(), std::next(d_u.end(),-1),
         std::next(d_u.begin()),
         alpha.begin(),

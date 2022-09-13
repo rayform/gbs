@@ -6,8 +6,6 @@
 using std::cos;
 using std::sin;
 using std::exp;
-using std::numbers::sqrt2;
-using std::numbers::pi;
 using gbs::operator-;
 
 TEST(tests_solvers, solve_N_nlop)
@@ -29,7 +27,7 @@ TEST(tests_solvers, solve_N_nlop)
 
         std::vector<double> x{0., 0.};
         std::vector<double> lb{0., -1.};
-        std::vector<double> hb{2 * pi, 1.};
+        std::vector<double> hb{2 * M_PI, 1.};
         auto tol = 1.e-8;
         auto minf = gbs::solve_N_nlop(
             f,
@@ -41,7 +39,7 @@ TEST(tests_solvers, solve_N_nlop)
             );
 
         ASSERT_NEAR(minf, 0.8, 2. * tol);
-        ASSERT_NEAR(x[0], 3. * pi / 2., 2. * tol);
+        ASSERT_NEAR(x[0], 3. * M_PI / 2., 2. * tol);
         ASSERT_NEAR(x[1], 0., 2. * tol);
 
     // solve with gradian
@@ -69,7 +67,7 @@ TEST(tests_solvers, solve_N_nlop_f)
 
     std::vector<T> x{0., 0.};
     std::vector<T> lb{0., -1.};
-    std::vector<T> hb{2 * pi, 1.};
+    std::vector<T> hb{2 * M_PI, 1.};
     T tol = 1.e-5; // float requires la lower tol
     auto minf = gbs::solve_N_nlop(
         f,
@@ -80,7 +78,7 @@ TEST(tests_solvers, solve_N_nlop_f)
         nlopt::GN_ORIG_DIRECT);
 
     ASSERT_NEAR(minf, T(0.8), 2. * tol);
-    ASSERT_NEAR(x[0], 3. * pi / 2., 25. * tol);
+    ASSERT_NEAR(x[0], 3. * M_PI / 2., 25. * tol);
     ASSERT_NEAR(x[1], 0., 2. * tol);
 
     // solve with gradian

@@ -167,11 +167,11 @@ namespace gbs
 
         {
             if (nPolesU()*nPolesV()!=m_poles.size())
-                throw std::exception("BSpline Surface constructor error.");
+                throw std::exception();
             if (!check_curve(nPolesU(), m_knotsFlatsU, degU))
-                throw std::exception("BSpline Surface constructor error.");
+                throw std::exception();
             if (!check_curve(nPolesV(), m_knotsFlatsV, degV))
-                throw std::exception("BSpline Surface constructor error.");
+                throw std::exception();
         }
 
         BSSurfaceGeneral() = default;
@@ -292,7 +292,7 @@ namespace gbs
             points_vector<T, dim + rational> poles_(nU);
             auto beg_ = std::next(m_poles.begin(), j * nU);
             auto end_ = (j < nV) ? std::next(m_poles.begin(), (j + 1) * nU) : m_poles.end();
-            std::copy(std::execution::par, beg_, end_, poles_.begin());
+            std::copy(/* std::execution::par, */ beg_, end_, poles_.begin());
 
             return poles_;
         }

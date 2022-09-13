@@ -14,7 +14,7 @@ namespace gbs
     {
         auto [u1, u2] = crv_begin->bounds();
         return std::all_of(
-            // std::execution::par,
+            // /* std::execution::par, */
             std::next(crv_begin,1),crv_end,
             [u1, u2](const auto &crv)
             {
@@ -35,7 +35,7 @@ namespace gbs
     {
         auto [u1, u2] = (*p_crv_begin)->bounds();
         return std::all_of(
-            // std::execution::par,
+            // /* std::execution::par, */
             std::next(p_crv_begin,1),p_crv_end,
             [u1, u2](const auto &p_crv)
             {

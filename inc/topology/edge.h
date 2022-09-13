@@ -116,7 +116,7 @@ namespace gbs
 
            this-> m_msh.vertices.resize(points.size());
             std::transform(
-                std::execution::par,
+                /* std::execution::par, */
                 points.begin(), points.end(),
                 this->m_msh.vertices.begin(),
                 [](const auto &pnt)
