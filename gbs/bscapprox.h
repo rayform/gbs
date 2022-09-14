@@ -176,7 +176,7 @@ namespace gbs
             std::vector<T> knots{crv_refined.knotsFlats()};
 
             for(size_t j {} ; j < n_pts ; j++)
-            // std::for_each(/* std::execution::par, */ j_.begin(),j_.end(),
+            // std::for_each(std::execution::par, j_.begin(),j_.end(),
             // [&](auto j)
             {
                 auto u_ = u[j];
@@ -331,7 +331,7 @@ namespace gbs
         auto u_lst = deviation_based_params<T, dim>(crv, np,deviation,n_max_pts);
         std::vector<T> u(u_lst.size());
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             u_lst.begin(),u_lst.end(),u.begin(),
             [](const auto &u_){return u_;}
         );
@@ -419,7 +419,7 @@ namespace gbs
         auto u_lst = deviation_based_params<T, dim>(crv, np,deviation);
         auto pts = make_points(crv,u_lst);
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             pts.begin(),
             pts.end(),
             pts.begin(),

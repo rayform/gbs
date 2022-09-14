@@ -5,7 +5,7 @@
 #include <gbs/exceptions.h>
 #include <vector>
 #include <array>
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 namespace gbs
 {
     /**
@@ -292,7 +292,7 @@ namespace gbs
             points_vector<T, dim + rational> poles_(nU);
             auto beg_ = std::next(m_poles.begin(), j * nU);
             auto end_ = (j < nV) ? std::next(m_poles.begin(), (j + 1) * nU) : m_poles.end();
-            std::copy(/* std::execution::par, */ beg_, end_, poles_.begin());
+            std::copy(std::execution::par, beg_, end_, poles_.begin());
 
             return poles_;
         }

@@ -1,6 +1,6 @@
 #pragma once
 #include <thrust/device_vector.h>
-#include <numeric>
+#include <oneapi/dpl/numeric>
 #define KNOT_EPS 1e-6
 namespace gbs
 {

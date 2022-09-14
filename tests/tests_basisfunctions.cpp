@@ -4,7 +4,7 @@
 #include <gbs/maths.h>
 #include <gbs-render/vtkfunctionrender.h>
 #include <chrono>
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 #include <iterator>
 
 const double tol = 1e-10;

@@ -1,7 +1,7 @@
 #pragma once
 #include <nlopt.hpp>
 #include <vector>
-#include <numeric>
+#include <oneapi/dpl/numeric>
 #include <gbs/vecop.h>
 namespace gbs
 {

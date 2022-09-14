@@ -137,7 +137,7 @@ namespace gbs
                 auto pts = extract_f(i);
                 auto params_i = gbs::curve_parametrization(pts, mode, true);
                 std::transform(
-                    /* std::execution::par, */
+                    std::execution::par,
                     params_i.begin(),
                     params_i.end(),
                     params.begin(),

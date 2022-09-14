@@ -113,7 +113,7 @@ namespace gbs
 
         std::vector<T> dm(n - 1);
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             u.begin(), std::next(u.end(), -1), std::next(u.begin(), 1), dm.begin(),
             [&crv](const auto &u1_,const auto &u2_) {
                 return length<T, dim, N>(crv, u1_[0], u2_[0]);
@@ -266,7 +266,7 @@ namespace gbs
         points_vector<T,dim> points(u_lst.size());
 
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             u_lst.begin(),u_lst.end(),points.begin(),
             [d,&crv](T u_){return crv(u_,d);}
         );
@@ -417,7 +417,7 @@ namespace gbs
     auto closest_curve(const point<T, dim> pt, const C &curve_begin, const C &curve_end, T tol = 1e-6)
     {
         return std::min_element(
-            /* std::execution::par, */
+            std::execution::par,
             curve_begin, curve_end,
             [&pt, tol](const auto &c1, const auto &c2)
             {
@@ -439,7 +439,7 @@ namespace gbs
     auto closest_p_curve(const point<T, dim> pt, const C &curve_begin, const C &curve_end, T tol = 1e-6)
     {
         return std::min_element(
-            /* std::execution::par, */
+            std::execution::par,
             curve_begin, curve_end,
             [&pt, tol](const auto &c1, const auto &c2)
             {

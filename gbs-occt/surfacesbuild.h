@@ -3,8 +3,8 @@
 #include <Geom_BSplineSurface.hxx>
 #include <vector>
 #include <list>
-#include <algorithm>
-#include <execution>
+#include <oneapi/dpl/algorithm>
+#include <oneapi/dpl/execution>
 #include <gbs-occt/containers.h>
 #include <gbs/bssurf.h>
 #include <gbs/knotsfunctions.h>
@@ -20,7 +20,7 @@ namespace occt_utils
                         const std::vector<int> &mv,
                         int degU,int degV) -> Handle(Geom_BSplineSurface)
     { 
-        auto nPolesV = std::reduce(/* std::execution::par, */ mv.cbegin(), mv.cend()) - degV - 1;
+        auto nPolesV = std::reduce(std::execution::par, mv.cbegin(), mv.cend()) - degV - 1;
         auto poles_arr = occt_utils::col2_from_vec<gp_Pnt>(p,nPolesV);
 	return new Geom_BSplineSurface(
 		poles_arr,

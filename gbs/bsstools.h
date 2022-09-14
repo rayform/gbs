@@ -18,7 +18,7 @@ namespace gbs
     {
         points_vector<T, dim + 1> poles(srf.poles().size());
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             srf.poles().begin(),
             srf.poles().end(),
             poles.begin(),

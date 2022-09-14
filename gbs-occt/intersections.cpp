@@ -3,7 +3,7 @@
 #include <Extrema_ExtPC.hxx>
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_Surface.hxx>
-#include <algorithm> 
+#include <oneapi/dpl/algorithm> 
 namespace occt_utils
 {
     Standard_EXPORT auto etrema_CS(const Adaptor3d_Curve & C, const Adaptor3d_Surface &S,double tol) -> std::list<res_CS >

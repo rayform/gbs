@@ -7,7 +7,7 @@
 #include <gbs/bscanalysis.h>
 #include <gbs-render/vtkcurvesrender.h>
 
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 #include <iostream>
 #include <fstream>
 #include <numbers>

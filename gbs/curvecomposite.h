@@ -1,7 +1,7 @@
 #pragma once
 
 #include <gbs/bscurve.h>
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 namespace gbs
 {
     template <typename T, size_t dim>

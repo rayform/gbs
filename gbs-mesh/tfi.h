@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <execution>
+#include <oneapi/dpl/execution>
 #include <gbs/gbslib.h>
 #include <gbs/curvescheck.h>
 #include <gbs/extrema.h>
@@ -551,7 +551,7 @@ namespace gbs
         auto i_range = make_range<size_t>(0, ni_ - 1);
 
         std::for_each(
-            /* std::execution::par, */
+            std::execution::par,
             i_range.begin(), i_range.end(),
             [&](size_t i_)
             {
@@ -598,7 +598,7 @@ namespace gbs
     void project_points_on_surface(const Surface<T,dim> &srf, points_vector<T, dim> &pts, T tol_projection =1e-6 )
     {
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             pts.begin(),
             pts.end(),
             pts.begin(),

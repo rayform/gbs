@@ -206,8 +206,8 @@ TEST(tests_mesh_delauney2d, mesh_cloud)
                     // }
 
                     auto it_inside_vtx =  std::find_if(
-                        /* std::execution::seq, */
-                        // /* std::execution::par, */
+                        std::execution::seq,
+                        // std::execution::par,
                         vertices_cloud.begin(),
                         vertices_cloud.end(),
                         // [&a,&b,&c](const auto &d)

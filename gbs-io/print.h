@@ -4,7 +4,7 @@
 #include <gbs/bscurve.h>
 #include <version>
 #include <iostream>
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 #ifndef __cpp_lib_format
 #include <fmt/core.h>
 using fmt::format;

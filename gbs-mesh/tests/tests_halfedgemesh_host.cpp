@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <memory>
-#include <numeric>
+#include <oneapi/dpl/numeric>
 #include <exception>
 #include <gbs/bscbuild.h>
 #include <gbs-render/vtkcurvesrender.h>

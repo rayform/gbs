@@ -4,10 +4,10 @@
 #include <gbs/gbslib.h>
 #include <gbs/vecop.h>
 #include <gbs/maths.h>
-#include <execution>
-#include <algorithm>
+#include <oneapi/dpl/execution>
+#include <oneapi/dpl/algorithm>
 #include <cmath>
-#include <numeric>
+#include <oneapi/dpl/numeric>
 
 namespace gbs
 {
@@ -197,7 +197,7 @@ namespace gbs
             auto N = basis_function(u, i, p, d, k);
 
             std::transform(
-                // /* std::execution::par, */
+                // std::execution::par,
                 poles[i].begin(),
                 poles[i].end(),
                 pt.begin(),
@@ -260,7 +260,7 @@ namespace gbs
         std::vector<T> Ni(i_max+1-i_min);
         auto indexes = make_range(i_min,i_max);
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             indexes.begin(),
             indexes.end(),
             Ni.begin(),
@@ -270,7 +270,7 @@ namespace gbs
         
         points_vector<T, dim> poles_in_span(poles.begin()+i_min,poles.begin()+i_max+1);
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             Ni.begin(),
             Ni.end(),
             poles_in_span.begin(),
@@ -284,7 +284,7 @@ namespace gbs
         // // return point<T,dim>{};        
         
         return std::reduce(
-            /* std::execution::par, */
+            std::execution::par,
             poles_in_span.cbegin(),
             poles_in_span.cend()
         );
@@ -300,7 +300,7 @@ namespace gbs
         //     //     pt[d] += N * pole[d];
         //     // }
         //     std::transform(
-        //         // /* std::execution::par, */
+        //         // std::execution::par,
         //         poles[i].begin(),
         //         poles[i].end(),
         //         pt.begin(),
@@ -403,7 +403,7 @@ namespace gbs
     {
         std::vector<std::array<T, dim + 1>> p(poles.size());
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(), poles.end(), weights.begin(), p.begin(),
             [](const auto &v, const auto &c) {
                 std::array<T, dim + 1> n;
@@ -453,14 +453,14 @@ namespace gbs
         weights.resize(poles_and_weights.size());
 
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles_and_weights.begin(),
             poles_and_weights.end(),
             poles.begin(),
             [](const auto &pw_) { return weight_projection<T, dim+1>(pw_); });
 
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles_and_weights.begin(),
             poles_and_weights.end(),
             weights.begin(),
@@ -501,7 +501,7 @@ namespace gbs
     {
         std::vector<std::array<T, dim+1>> poles_with_weights(poles.size());
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             poles_with_weights.begin(),
@@ -532,7 +532,7 @@ namespace gbs
         }
         std::vector<std::array<T, dim+1>> poles_with_weights(poles.size());
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             weights.begin(),
@@ -558,7 +558,7 @@ namespace gbs
     auto scale_poles(std::vector<std::array<T, dim>> &poles, T scale) -> void
     {
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -569,14 +569,14 @@ namespace gbs
     auto scale_weights(std::vector<std::array<T, dim>> &poles, T mean_value = T(1.0)) -> void
     {
         // auto mean_value_ = std::reduce(
-        //     /* std::execution::par, */
+        //     std::execution::par,
         //     poles.begin(),
         //     poles.end(),
         //     T(0.),
         //     [](const auto &s_, const auto &v_) { s_.back() + v_.back(); });
         T mean_value_ = 0.;
         std::for_each(
-            // /* std::execution::par, */
+            // std::execution::par,
             poles.begin(),
             poles.end(),
             [&mean_value_] (const auto &v_) mutable { mean_value_ += v_.back(); });

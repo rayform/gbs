@@ -11,7 +11,7 @@ namespace gbs
     {
         auto poles = crv.poles();
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -28,7 +28,7 @@ namespace gbs
         separate_weights(poles_w, poles, weights);
 
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -42,7 +42,7 @@ namespace gbs
     {
         auto poles = crv.poles();
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             poles.begin(),
@@ -59,7 +59,7 @@ namespace gbs
         separate_weights(poles_w, poles, weights);
 
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             poles.begin(),
             poles.end(),
             poles.begin(),

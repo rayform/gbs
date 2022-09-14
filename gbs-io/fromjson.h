@@ -5,7 +5,7 @@
 #include <string>
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
-#include <execution>
+#include <oneapi/dpl/execution>
 #include <gbs/curves>
 #include <gbs/surfaces>
 #include <gbs/bscinterp.h>
@@ -81,7 +81,7 @@ namespace gbs
         }
         std::vector<T> v_(a.Size());
         std::transform(
-            // /* std::execution::par, */
+            // std::execution::par,
             a.Begin(),
             a.End(),
             v_.begin(),
@@ -109,7 +109,7 @@ namespace gbs
         }
         std::array<T, dim> v_;
         std::transform(
-            // /* std::execution::par, */
+            // std::execution::par,
             a.Begin(),
             a.End(),
             v_.begin(),
@@ -147,7 +147,7 @@ namespace gbs
         }
         std::vector<std::array<T, dim>> v_(a.Size());
         std::transform(
-            // /* std::execution::par, */
+            // std::execution::par,
             a.Begin(),
             a.End(),
             v_.begin(),
@@ -171,7 +171,7 @@ namespace gbs
             {
                 v_[j][i] =  make_array<T, dim>( a.GetArray()[i].GetArray()[j] );
                 // std::transform(
-                //     /* std::execution::par, */
+                //     std::execution::par,
                 //     a.GetArray()[i].GetArray().Begin(),
                 //     a.GetArray()[i].GetArray().End(),
                 //     v_.begin(),

@@ -1,5 +1,5 @@
 #pragma once
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 #include <vector>
 #include <list>
 #include <array>

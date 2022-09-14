@@ -3,7 +3,7 @@
 #include <array>
 #include <vector>
 #include <xmemory>
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 #include <span>
 
 #include <vtkSmartPointer.h>

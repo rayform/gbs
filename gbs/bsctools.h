@@ -58,7 +58,7 @@ namespace gbs
     {
         auto km2 = unflat_knots(pk2.second);
         std::for_each(
-            // /* std::execution::par, */
+            // std::execution::par,
             km2.begin(), km2.end(),
             [&pk1, degree](const auto &km)
             {
@@ -457,7 +457,7 @@ namespace gbs
     {
         points_vector<T,dim+1> poles(crv.poles().size());
         std::transform(
-            /* std::execution::par, */
+            std::execution::par,
             crv.poles().begin(),
             crv.poles().end(),
             poles.begin(),

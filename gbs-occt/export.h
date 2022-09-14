@@ -8,7 +8,7 @@
 #include <gp_Pln.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopLoc_Location.hxx>
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 
 namespace occt_utils
 {

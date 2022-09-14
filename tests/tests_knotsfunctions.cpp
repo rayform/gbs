@@ -10,7 +10,7 @@
 
 #include <Eigen/Dense>
 
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 const double tol = 1e-7;
 
 using namespace gbs;

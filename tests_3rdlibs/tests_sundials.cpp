@@ -9,7 +9,7 @@
 #include <gbs/vecop.h>
 #include <gbs/bssinterp.h>
 
-#include <algorithm>
+#include <oneapi/dpl/algorithm>
 
 using gbs::operator-;
 

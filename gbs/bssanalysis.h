@@ -17,7 +17,7 @@ namespace gbs
             {
                 points_vector<T, dim> points_(nu);
                 std::transform(
-                    /* std::execution::par, */
+                    std::execution::par,
                     u.begin(),
                     u.end(),
                     points_.begin(),
